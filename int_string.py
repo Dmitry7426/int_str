@@ -34,7 +34,7 @@ slovar = []
 #     number = int(''.join(map(str, sl2)))
 #
 # print(number)
-
+# Функция разложения простого 3х значного числа
 def creat_arr(a):
     i = a
     if i <= 19:
@@ -50,9 +50,9 @@ def creat_arr(a):
         arr.append(hundreds[(i // 100) - 1] + ' ' + to19)
     return arr
 
-# print(creat_arr(213))
+print(creat_arr(779))
 
-e = 123456
+e = 2
 sl = str('{0:,}'.format(e).replace(',', ' '))
 
 sl = sl.split()
@@ -62,18 +62,22 @@ for i in sl:
     a += 1
 
 
+print(sl)
+# разбивка тысяч
 
-if a == 2:
+if a == 1:
     w = sl[0]
+    print(w)
     if int(w) <= 19:
         if int(w) == 1:
-            slovar.append(from0To2[1] + ' ' + thousands[0][0] + ' ' + str(*creat_arr(int(sl[1]))))
+            slovar.append(from0To2[1] + ' ' + thousands[0][0])
         elif int(w) == 2:
-            slovar.append(from0To2[2] + ' ' + thousands[0][1] + ' ' + str(*creat_arr(int(sl[1]))))
+            slovar.append(from0To2[2] + ' ' + thousands[0][1])
         elif int(w) == 3 or int(w) == 4:
-            slovar.append(from0To19[int(w)] + ' ' + thousands[0][1] + ' ' + str(*creat_arr(int(sl[1]))))
+            slovar.append(from0To19[int(w)] + ' ' + thousands[0][1])
         elif int(w) >= 5:
-            slovar.append(from0To19[int(w)] + ' ' + thousands[0][2] + ' ' + str(*creat_arr(int(sl[1]))))
+            print(int(w))
+            slovar.append(from0To19[int(w)] + ' ' + thousands[0][2])
     if 20 <= int(w) <= 99:
         if int(w) % 10 == 1:
             slovar.append(tens[(int(w) // 10) - 1] + ' ' + from0To2[1] + ' ' + thousands[0][0])
@@ -88,17 +92,18 @@ if a == 2:
 
     if 100 <= int(w) <= 999:
         # slovar.append(hundreds[(int(w) // 100) - 1])
-        print(int(w) // 100)
+        print(int(w) // 100, 'Первый цифра')
         print(int(w) // 10)
         print(int(w) % 100)
-        if int(w) // 100 == 1:
-            hund = hundreds[(int(w) // 100) - 1]
-            print(hund)
-            if int(w) % 100 <= 19:
-                pass
-            # slovar.append(hundreds[(int(w) // 100) - 1] + ' ' + tens[int(w) // 100] + ' ' + from0To2[1] + ' ' + thousands[0][0])
-        # if int(w) // 100 == 2:
-        #     slovar.append(hundreds[(int(w) // 100) - 1] + ' ' + tens[int(w) // 100] + ' ' + from0To2[2] + ' ' + thousands[0][0])
+        print((int(w) % 100) // 10, 'Второй цифра')
+        print(int(w) % 10, 'Третий цифра')
+        hund = hundreds[(int(w) // 100) - 1]
+        print(hund)
+        two_digit = tens[((int(w) % 100) // 10) - 1]
+        print(two_digit)
+        tre_digit = from0To19[(int(w) % 10)]
+        print(tre_digit)
+
 
 
 
